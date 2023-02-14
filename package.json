@@ -12,7 +12,6 @@
     "start:testing": "cross-env PORT=8080 REACT_APP_MODE=testing react-scripts start",
     "start:live": "cross-env PORT=8080 REACT_APP_MODE=live react-scripts start",
     "start:prod": "cross-env PORT=8080 REACT_APP_MODE=prod react-scripts start",
-    "build:dev": "cross-env REACT_APP_MODE=dev react-scripts build",
     "build:testing": "cross-env REACT_APP_MODE=testing react-scripts build",
     "build:live": "cross-env REACT_APP_MODE=live react-scripts build",
     "build:prod": "cross-env REACT_APP_MODE=prod react-scripts build",
