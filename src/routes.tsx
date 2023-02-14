@@ -7,8 +7,6 @@ import {
   PRIVACY_POLICY_PATH,
   REGULATION_PATH,
   TERMS_OF_USE_PATH,
-  WORKER_PATH,
-  WORKER_FETCH_PATH,
 } from "./constants";
 import { HomePage } from "./pages/Home";
 import { WhitelistAddressModule } from "./modules/WhitelistAddress";
@@ -16,7 +14,6 @@ import { BankAccountModule } from "./modules/BankAccount";
 import { LoginModule } from "./modules/Login";
 import { RegisterModule } from "./modules/Register";
 import { AlertModule } from "./modules/Alert";
-import { FetchWorker } from "services/BlockStreamApi/FetchWorker.jsx";
 
 const FAQPage = lazy(
   () =>
@@ -73,7 +70,7 @@ export const Routes: FC = () => (
     <Route path={HOME_PATH} component={BankAccountModule} />
     <Route path={HOME_PATH} component={WhitelistAddressModule} />
     <Route path={HOME_PATH} component={AlertModule} />
-    <Route path={WORKER_FETCH_PATH} component={FetchWorker} />
+    {/* <Route path={WORKER_FETCH_PATH} component={FetchWorker} /> */}
     <Suspense fallback={<div />}>
       <Route path={FAQ_PATH} component={FAQPage} />
       <Route path={PRIVACY_POLICY_PATH} component={PrivacyPolicyPage} />
