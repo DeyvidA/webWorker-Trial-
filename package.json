@@ -15,7 +15,9 @@
     "build:testing": "cross-env REACT_APP_MODE=testing react-scripts build",
     "build:live": "cross-env REACT_APP_MODE=live react-scripts build",
     "build:prod": "cross-env REACT_APP_MODE=prod react-scripts build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "jest",
+    "test:watch": "jest --watch --silent=false"
   },
   "dependencies": {
     "@material-ui/core": "4.11.4",
