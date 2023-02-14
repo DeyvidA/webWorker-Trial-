@@ -6,23 +6,36 @@ import { AssetResponse } from "./typedef";
 
 export class BlockStreamApi {
   static async fetchDefaultAsset(): Promise<AssetResponse> {
-    return fetch(BLOCKSTREAM_API_ASSET_URL).then((res) => res.json());
+    const worker = new Worker("/workerFetch.js");
+    worker.postMessage(BLOCKSTREAM_API_ASSET_URL);
+    return new Promise((resolve, reject) => {
+      worker.addEventListener("message", async (event) => {
+        console.log("Message Event", event);
+        const data = await event.data;
+
+        resolve(data);
+      });
+
+      worker.addEventListener("error", (event) => {
+        reject(event);
+      });
+    });
   }
 
   static async fetchSecondAsset() {
     const worker = new Worker("/workerFetch.js");
     worker.postMessage(SECOND_API_ASSET_URL);
     return new Promise((resolve, reject) => {
-      worker.onmessage = (e) => {
-        console.log("e.data", e.data);
-        resolve(e.data);
-        worker.terminate();
-      };
-      worker.onerror = (e) => {
-        console.log("Aca muere");
-        reject(e);
-        worker.terminate();
-      };
+      worker.addEventListener("message", async (event) => {
+        console.log("Message Event", event);
+        const data = await event.data;
+
+        resolve(data);
+      });
+
+      worker.addEventListener("error", (event) => {
+        reject(event);
+      });
     });
   }
 }
